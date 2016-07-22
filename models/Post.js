@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     author: DataTypes.STRING,
     image_url: DataTypes.STRING,
     link: DataTypes.STRING,
-    description: Datatypes.TEXT
+    description: DataTypes.TEXT
   });
   return Post;
 };
