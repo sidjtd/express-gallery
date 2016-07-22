@@ -32,3 +32,4 @@ node_modules
 
 # Dev & utility stuff
 makedb.sql
+test.sql
