@@ -1,10 +1,11 @@
 const Express = require('express');
 const Router = Express.Router();
 
-const models = require('../models/galleryactions');
+const db = require('../models');
+const Post = db.Post;
 
 Router.get('/', (req, res) => {
-  models.all()
+  Post.all()
     .then( _ => {
       return res.status(200).send({'success': true})})
     .catch( err => {
@@ -13,7 +14,7 @@ Router.get('/', (req, res) => {
 });
 
 Router.get('/gallery/:id/', (req, res) => {
-  models.byId(req.params.id)
+  Post.byId(req.params.id)
     .then( _ => {
       return res.status(200).send({'success': true})})
     .catch( err => {
@@ -28,7 +29,7 @@ Router.get('/gallery/new', (req, res) => {
 
 
 Router.post('/gallery', (req,res)=>{
-  models.add(req.body)
+  Post.add(req.body)
   .then( _ => {
     return res.status(200).send({'success': true})})
   .catch( err => {
@@ -37,7 +38,7 @@ Router.post('/gallery', (req,res)=>{
 });
 
 Router.get('/gallery/:id/edit', (req, res) => {
-  models.edit(req.body)
+  Post.edit(req.body)
   .then( _ => {
     return res.status(200).send({'success': true})})
   .catch( err => {
@@ -46,7 +47,7 @@ Router.get('/gallery/:id/edit', (req, res) => {
 });
 
 Router.put('/gallery/:id', (req, res) => {
-  models.put(req.param.id)
+  Post.put(req.param.id)
   .then( _ => {
     return res.status(200).send({'success': true})})
   .catch( err => {
@@ -55,7 +56,7 @@ Router.put('/gallery/:id', (req, res) => {
 });
 
 Router.delete('/gallery/:id', (req, res) => {
-  models.delete(req.param.id)
+  Post.delete(req.param.id)
   .then( _ => {
     return res.status(200).send({'success': true})})
   .catch( err => {
