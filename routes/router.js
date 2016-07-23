@@ -34,15 +34,16 @@ Router.get('/:id', (req, res) => {
   var id = req.params.id;
   Post.findById(id)
   .then(function (findResult) {
-      return res.render('./item', findResult.dataValues);
-    });
+    return res.render('./item', findResult.dataValues);
+  });
 });
 
 Router.post('/', (req,res)=>{
   Post.create(req.body)
   .then(function (postdata) {
-      res.json(postdata); // sends back values as entered into DB
-    });
+    // res.json(postdata); // sends back values as entered into DB
+     return res.render('./item', postdata.dataValues);
+  });
 });
 
 Router.get('/:id/edit', (req, res) => {
@@ -52,11 +53,6 @@ Router.get('/:id/edit', (req, res) => {
     // console.log('result: ', result.dataValues);
     return res.render('./edit', result.dataValues);
   });
-  // .then(function (findResult) {
-  //     res.json(findResult); // returns query result as a single object
-  //   });
-  // populate rendered form values with findResult.author, findResult.image_url,
-  // findResult.link, findResult.description
 });
 
 Router.put('/:id', (req, res) => {
