@@ -1,8 +1,22 @@
 const Express = require('express');
 const Router = Express.Router();
-
+const app = Express();
 const db = require('../models');
 const Post = db.Post;
+const methodOverride = require('method-override');
+app.use(methodOverride('X-HTTP-Method-Override'));
+
+
+/*  >>> DAS MIDDLEWARE <<<  */
+Router.use(methodOverride(function(req, res){
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    const method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
+/*  >>> END MIDDLEWARE <<<  */
 
 Router.get('/', (req, res) => {
   Post.findAll()
@@ -20,7 +34,8 @@ Router.get('/:id', (req, res) => {
   var id = req.params.id;
   Post.findById(id)
   .then(function (findResult) {
-      res.json(findResult); // returns query result as a single object
+      // res.json(findResult); // returns query result as a single object
+      return res.render('./item', findResult.dataValues);
     });
 });
 
@@ -34,9 +49,13 @@ Router.post('/', (req,res)=>{
 Router.get('/:id/edit', (req, res) => {
   var id = req.params.id;
   Post.findById(id)
-  .then(function (findResult) {
-      res.json(findResult); // returns query result as a single object
-    });
+  .then(function (result) {
+    // console.log('result: ', result.dataValues);
+    return res.render('./edit', result.dataValues);
+  });
+  // .then(function (findResult) {
+  //     res.json(findResult); // returns query result as a single object
+  //   });
   // populate rendered form values with findResult.author, findResult.image_url,
   // findResult.link, findResult.description
 });
