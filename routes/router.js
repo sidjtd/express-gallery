@@ -44,10 +44,22 @@ Router.get('/:id/edit', (req, res) => {
 Router.put('/:id', (req, res) => {
   var body = req.body;
   body.id = req.params.id;
-  Post.upsert(body)
-  .then(function (result) {
-      res.json(result); // sends back 0 or 1 for failure/success
-    });
+  // make sure id exists in the database
+  Post.findById(body.id)
+   .then((findResult) => {
+    // null means the id wasn't in the db
+    if(JSON.stringify(findResult) !== null && JSON.stringify(findResult) != 'null') {
+      Post.upsert(body)
+        .then(function (result) {
+          return res.json(result); // sends back false if updated, true if created
+        });
+    } else {
+      return res.json(`couldn't find id ${body.id}`);
+    }
+  })
+  .catch((err) => {
+    console.error(`Problems with findById ${body.id}: `, err);
+  });
 });
 
 Router.delete('/:id', (req, res) => {
