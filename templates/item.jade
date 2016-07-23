@@ -1,7 +1,4 @@
-
-ul
-
-  li Author: #{author}
-  li Pic: a img(src=http://www.'#{image_url}')
-  li Link: #{link}
-  li Description: #{description}
+h3 #{link}
+a(href='/gallery/#{id}/edit'): img(src='#{image_url}')
+p.
+  #{description}

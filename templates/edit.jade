@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-html(lang="en")
-head
-  meta(charset="UTF-8")
-  title Document
-body
-  ul
-    if item
-      li #{item.name}, #{item.price}, In-Stock: #{item.inventory}
-      li ID: #{item.id}
+h1 Edit this post!
+form(action='/gallery/#{id}' method='POST')
+  input(type='hidden' name='_method' value='PUT')
+  div
+    label(for='author') Author
+    input(type='text' name='author' value='#{author}' id='author')
 
-  h1 EDIT VALUES:
+  div
+    label(for='image_url') URL
+    input(type='text' name='image_url' value='#{image_url}' id='image_url')
 
-  form(method='POST' action='/products/#{item.id}' enctype='application/x-www-form-urlencoded')
-    p Edit Name:
-    input(type='text' placeholder='#{item.name}' name='name')
-    p Edit Price:
-    input(type='text' placeholder='#{item.price}' name='price')
-    p Edit In-Stock:
-    input(type='text' placeholder='#{item.inventory}' name='inventory')
-    input(type='hidden' name='id' value='#{item.id}')
-    input(type='hidden' value='PUT' name='_method')
-    input(type='submit')
+  div
+    label(for='link') Site
+    input(type='text' name='link' value='#{link}' id='link')
+
+  div
+    label(for='description') Description
+    input(type='text' name='description' value='#{description}' id='description')
+
+  div.button
+    button(type='submit') Send

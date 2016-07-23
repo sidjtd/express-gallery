@@ -1,8 +1,22 @@
 const Express = require('express');
 const Router = Express.Router();
-
+const app = Express();
 const db = require('../models');
 const Post = db.Post;
+const methodOverride = require('method-override');
+app.use(methodOverride('X-HTTP-Method-Override'));
+
+
+/*  >>> DAS MIDDLEWARE <<<  */
+Router.use(methodOverride(function(req, res){
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    const method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
+/*  >>> END MIDDLEWARE <<<  */
 
 Router.get('/', (req, res) => {
   Post.findAll()
@@ -12,16 +26,14 @@ Router.get('/', (req, res) => {
 });
 
 Router.get('/new', (req, res) => {
-  res.send('GET received for /gallery/new');
-  // return res.render('./products/new');
+  // res.send('GET received for /gallery/new');
+  return res.render('./new');
 });
 
 Router.get('/:id', (req, res) => {
   var id = req.params.id;
   Post.findById(id)
   .then(function (findResult) {
-      //res.json(findResult); // returns query result as a single object
-      //console.log(findResult.dataValues);
       return res.render('./item', findResult.dataValues);
     });
 });
@@ -36,9 +48,13 @@ Router.post('/', (req,res)=>{
 Router.get('/:id/edit', (req, res) => {
   var id = req.params.id;
   Post.findById(id)
-  .then(function (findResult) {
-      res.json(findResult); // returns query result as a single object
-    });
+  .then(function (result) {
+    // console.log('result: ', result.dataValues);
+    return res.render('./edit', result.dataValues);
+  });
+  // .then(function (findResult) {
+  //     res.json(findResult); // returns query result as a single object
+  //   });
   // populate rendered form values with findResult.author, findResult.image_url,
   // findResult.link, findResult.description
 });
@@ -56,6 +72,7 @@ Router.put('/:id', (req, res) => {
           return res.json(result); // sends back false if updated, true if created
         });
     } else {
+      // ID doesn't exist
       return res.json(`couldn't find id ${body.id}`);
     }
   })
@@ -77,5 +94,3 @@ Router.delete('/:id', (req, res) => {
 });
 
 module.exports = Router;
-
-
