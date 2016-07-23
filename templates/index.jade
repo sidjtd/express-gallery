@@ -1,6 +1,7 @@
-ul
-  each pic in specificPicture
-    li Author: #{pic.author}
-    li Pic: #{pic.image_url}
-    li Link: #{pic.link}
-    li Description: #{pic.description}
+extends layout
+
+include mixins/listGallery
+
+block content
+  if(pics.length)
+    mixin loadGallery(pics)

@@ -27,14 +27,14 @@ Router.get('/', (req, res) => {
 
 Router.get('/new', (req, res) => {
   // res.send('GET received for /gallery/new');
-  return res.render('./new');
+  return res.render('new');
 });
 
 Router.get('/:id', (req, res) => {
   var id = req.params.id;
   Post.findById(id)
   .then(function (findResult) {
-    return res.render('./item', findResult.dataValues);
+    return res.render('item', findResult.dataValues);
   });
 });
 
@@ -42,16 +42,16 @@ Router.post('/', (req,res)=>{
   Post.create(req.body)
   .then(function (postdata) {
     // res.json(postdata); // sends back values as entered into DB
-     return res.render('./item', postdata.dataValues);
+     return res.render('item', postdata.dataValues);
   });
 });
 
 Router.get('/:id/edit', (req, res) => {
-  var id = req.params.id;
+  var id = req.params.id
   Post.findById(id)
   .then(function (result) {
     // console.log('result: ', result.dataValues);
-    return res.render('./edit', result.dataValues);
+    return res.render('edit', result.dataValues);
   });
 });
 
