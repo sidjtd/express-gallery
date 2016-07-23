@@ -12,8 +12,8 @@ Router.get('/', (req, res) => {
 });
 
 Router.get('/new', (req, res) => {
-  res.send('GET received for /gallery/new');
-  // return res.render('./products/new');
+  // res.send('GET received for /gallery/new');
+  return res.render('./new');
 });
 
 Router.get('/:id', (req, res) => {
@@ -54,6 +54,7 @@ Router.put('/:id', (req, res) => {
           return res.json(result); // sends back false if updated, true if created
         });
     } else {
+      // ID doesn't exist
       return res.json(`couldn't find id ${body.id}`);
     }
   })
@@ -75,5 +76,3 @@ Router.delete('/:id', (req, res) => {
 });
 
 module.exports = Router;
-
-

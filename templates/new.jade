@@ -1,11 +1,20 @@
+h1 New Post
+form(action='/gallery' method='post')
+  div
+    label(for='author') Author
+    input(type='text' name='author' placeholder='username' id='author')
 
-h1 CREATE NEW ARTICLE
+  div
+    label(for='image_url') URL
+    input(type='text' name='image_url' placeholder='http://' id='image_url')
 
-form(method='POST' action='/articles' enctype='application/x-www-form-urlencoded')
-  p Article Title:
-  input(type='text' placeholder='Title' name='title')
-  p Article Body:
-  input(type='text' placeholder='Body' name='body')
-  p Article Author:
-  input(type='text' placeholder='Author' name='author')
-  input(type='submit')
+  div
+    label(for='link') Site
+    input(type='text' name='link' placeholder='Example: flickr.com' id='link')
+
+  div
+    label(for='description') Description
+    input(type='text' name='description' placeholder='Describe your image here' id='description')
+
+  div.button
+    button(type='submit') Send
