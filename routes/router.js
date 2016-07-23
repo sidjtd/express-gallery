@@ -20,7 +20,9 @@ Router.get('/:id', (req, res) => {
   var id = req.params.id;
   Post.findById(id)
   .then(function (findResult) {
-      res.json(findResult); // returns query result as a single object
+      //res.json(findResult); // returns query result as a single object
+      //console.log(findResult.dataValues);
+      return res.render('./item', findResult.dataValues);
     });
 });
 
