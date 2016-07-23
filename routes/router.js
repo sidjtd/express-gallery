@@ -21,8 +21,10 @@ Router.use(methodOverride(function(req, res){
 Router.get('/', (req, res) => {
   Post.findAll()
   .then(function (findResult) {
+    if(findResult !== null && findResult != 'null'){
       res.json(findResult); // returns query result as an array of objects
-    });
+    }
+  });
 });
 
 Router.get('/new', (req, res) => {
@@ -34,24 +36,31 @@ Router.get('/:id', (req, res) => {
   var id = req.params.id;
   Post.findById(id)
   .then(function (findResult) {
+<<<<<<< HEAD
     return res.render('item', findResult.dataValues);
+=======
+    if(findResult !== null && findResult != 'null'){
+      return res.render('item', findResult.dataValues);
+    }
+>>>>>>> andrew_master
   });
 });
 
 Router.post('/', (req,res)=>{
   Post.create(req.body)
   .then(function (postdata) {
-    // res.json(postdata); // sends back values as entered into DB
-     return res.render('item', postdata.dataValues);
+    // sends back values as entered into DB
+    return res.render('item', postdata.dataValues);
   });
 });
 
 Router.get('/:id/edit', (req, res) => {
   var id = req.params.id
   Post.findById(id)
-  .then(function (result) {
-    // console.log('result: ', result.dataValues);
-    return res.render('edit', result.dataValues);
+  .then(function (findResult) {
+    if(findResult !== null && findResult != 'null') {
+      return res.render('edit', findResult.dataValues);
+    }
   });
 });
 
@@ -62,7 +71,7 @@ Router.put('/:id', (req, res) => {
   Post.findById(body.id)
    .then((findResult) => {
     // null means the id wasn't in the db
-    if(JSON.stringify(findResult) !== null && JSON.stringify(findResult) != 'null') {
+    if(findResult !== null && findResult != 'null') {
       Post.upsert(body)
         .then(function (result) {
           return res.json(result); // sends back false if updated, true if created

@@ -21,3 +21,8 @@ form(action='/gallery/#{id}' method='POST')
 
   div.button
     button(type='submit') Send
+
+form(action='/gallery/#{id}' method='POST')
+  input(type='hidden' name='_method' value='DELETE')
+  div.button
+    button(type='submit') Delete
