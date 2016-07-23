@@ -4,14 +4,16 @@ const bodyParser = require('body-parser');
 const db = require('./models');
 var Post = db.Post;
 
+app.set('view engine','jade');
+app.set('views','./templates');
 
 /*  ROUTES  */
 var routr = require ('./routes/router');
-
+var PORT = 3000;
 /*  MIDDLEWARE  */
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/gallery', routr);
 
-app.listen(3000, function() {
+app.listen(PORT, function() {
   db.sequelize.sync();
 });
