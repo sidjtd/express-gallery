@@ -1,5 +1,7 @@
-ul
-  each article in articles
-    li Title: #{article.title}
-    li Description: #{article.body}
-    li Author: #{article.author}
+extends layout
+
+include mixins/listGallery
+
+block content
+  if(pics.length)
+    mixin loadGallery(pics)

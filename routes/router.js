@@ -36,27 +36,44 @@ Router.get('/:id', (req, res) => {
   var id = req.params.id;
   Post.findById(id)
   .then(function (findResult) {
+<<<<<<< HEAD
     if(findResult !== null && findResult != 'null'){
       return res.render('item', findResult.dataValues);
     }
     });
+=======
+    return res.render('item', findResult.dataValues);
+  });
+>>>>>>> 6ac0a3b0896dfa90f532a914262df21f8938f581
 });
 
 Router.post('/', (req,res)=>{
   Post.create(req.body)
   .then(function (postdata) {
+<<<<<<< HEAD
       // res.json(postdata); // sends back values as entered into DB
        return res.render('item', postdata.dataValues);
     });
+=======
+    // res.json(postdata); // sends back values as entered into DB
+     return res.render('item', postdata.dataValues);
+  });
+>>>>>>> 6ac0a3b0896dfa90f532a914262df21f8938f581
 });
 
 Router.get('/:id/edit', (req, res) => {
-  var id = req.params.id;
+  var id = req.params.id
   Post.findById(id)
+<<<<<<< HEAD
   .then(function (findResult) {
     if(findResult !== null && findResult != 'null') {
       return res.render('edit', findResult.dataValues);
     }
+=======
+  .then(function (result) {
+    // console.log('result: ', result.dataValues);
+    return res.render('edit', result.dataValues);
+>>>>>>> 6ac0a3b0896dfa90f532a914262df21f8938f581
   });
 });
 
