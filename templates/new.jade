@@ -1,0 +1,11 @@
+
+h1 CREATE NEW ARTICLE
+
+form(method='POST' action='/articles' enctype='application/x-www-form-urlencoded')
+  p Article Title:
+  input(type='text' placeholder='Title' name='title')
+  p Article Body:
+  input(type='text' placeholder='Body' name='body')
+  p Article Author:
+  input(type='text' placeholder='Author' name='author')
+  input(type='submit')

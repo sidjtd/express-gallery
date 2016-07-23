@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Document
+body
+  ul
+    if item
+      li #{item.name}, #{item.price}, In-Stock: #{item.inventory}
+      li ID: #{item.id}
+
+  h1 EDIT VALUES:
+
+  form(method='POST' action='/products/#{item.id}' enctype='application/x-www-form-urlencoded')
+    p Edit Name:
+    input(type='text' placeholder='#{item.name}' name='name')
+    p Edit Price:
+    input(type='text' placeholder='#{item.price}' name='price')
+    p Edit In-Stock:
+    input(type='text' placeholder='#{item.inventory}' name='inventory')
+    input(type='hidden' name='id' value='#{item.id}')
+    input(type='hidden' value='PUT' name='_method')
+    input(type='submit')
