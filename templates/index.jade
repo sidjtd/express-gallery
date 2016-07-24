@@ -1,7 +1,5 @@
-extends layout
 
-include mixins/listGallery
+include mixins/itemRender
+include layout
 
-block content
-  if(pics.length)
-    mixin loadGallery(pics)
+  mixin manySmallItems(galleryItems)

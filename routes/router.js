@@ -22,7 +22,8 @@ Router.get('/', (req, res) => {
   Post.findAll()
   .then(function (findResult) {
     if(findResult !== null && findResult != 'null'){
-      res.json(findResult); // returns query result as an array of objects
+      return res.render('index', {galleryItems: findResult});
+      // return res.send(findResult); // returns query result as an array of objects
     }
   });
 });

@@ -1,0 +1,6 @@
+mixin manySmallItems(list)
+  each thing in list
+    .smallitem.smallitem-container
+      .smallitem.image-holder
+       a(href='/gallery/#{thing.id}'): img(src='#{thing.image_url}')
+      .smallitem.description-holder #{thing.description}
