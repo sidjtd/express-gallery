@@ -3,7 +3,9 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     title Express Gallery
-    link(rel="stylesheet" type="text/css" href="../css/styles.css")
+    //- link(href='../public/css/styles.css', rel='stylesheet', type='text/css' )
+    style
+        include ../public/css/styles.css
   body
     include header
-     script(type="text/javascript")
+      script(type="text/javascript")

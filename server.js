@@ -7,6 +7,8 @@ var Post = db.Post;
 app.set('view engine','jade');
 app.set('views','./templates');
 
+
+
 /*  ROUTES  */
 var routr = require ('./routes/router');
 var PORT = 3000;
@@ -18,6 +20,7 @@ app.use(function(req, res, next) {
  });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/gallery', routr);
+app.use('/', routr);
 
 
 app.listen(PORT, function() {
