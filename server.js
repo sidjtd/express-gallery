@@ -7,6 +7,8 @@ var Post = db.Post;
 app.set('view engine','jade');
 app.set('views','./templates');
 
+
+
 /*  ROUTES  */
 var routr = require ('./routes/router');
 var PORT = 3000;

@@ -23,7 +23,6 @@ Router.get('/', (req, res) => {
   .then(function (findResult) {
     if(findResult !== null && findResult != 'null'){
       return res.render('index', {galleryItems: findResult});
-      // return res.send(findResult); // returns query result as an array of objects
     }
   });
 });
