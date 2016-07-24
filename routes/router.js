@@ -40,7 +40,7 @@ Router.get('/:id', (req, res) => {
     return res.render('item', findResult.dataValues);
 =======
     if(findResult !== null && findResult != 'null'){
-      return res.render('item', findResult.dataValues);
+      return res.render('detailview', findResult.dataValues);
     }
 >>>>>>> andrew_master
   });
@@ -55,7 +55,7 @@ Router.post('/', (req,res)=>{
 });
 
 Router.get('/:id/edit', (req, res) => {
-  var id = req.params.id
+  var id = req.params.id;
   Post.findById(id)
   .then(function (findResult) {
     if(findResult !== null && findResult != 'null') {
