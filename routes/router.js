@@ -39,7 +39,7 @@ Router.get('/:id', (req, res) => {
     if(findResult !== null && findResult != 'null'){
       return res.render('detailview', findResult.dataValues);
     }
-    });
+  });
 });
 
 Router.post('/', (req,res)=>{
