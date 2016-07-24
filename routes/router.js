@@ -36,13 +36,9 @@ Router.get('/:id', (req, res) => {
   var id = req.params.id;
   Post.findById(id)
   .then(function (findResult) {
-<<<<<<< HEAD
-    return res.render('item', findResult.dataValues);
-=======
     if(findResult !== null && findResult != 'null'){
       return res.render('detailview', findResult.dataValues);
     }
->>>>>>> andrew_master
   });
 });
 
