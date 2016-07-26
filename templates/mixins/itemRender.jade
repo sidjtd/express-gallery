@@ -2,5 +2,5 @@ mixin manySmallItems(list)
   each thing in list
     .smallitem.smallitem-container
       .smallitem.image-holder.image-holder-small
-       a(href='/gallery/#{thing.id}'): img(src='#{thing.image_url}')
+       a(href='/gallery/#{thing.id}'): img(src='#{thing.image_url}').small-image
       .smallitem.description-holder.description-holder-small #{thing.description}

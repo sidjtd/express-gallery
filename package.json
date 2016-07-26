@@ -16,15 +16,22 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "gulp": "^3.9.1",
+    "express-session": "^1.14.0",
     "jade": "^1.11.0",
-    "live-reload": "^1.1.0",
     "method-override": "^2.3.6",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pg": "^6.0.3",
     "pg-hstore": "^2.3.2",
     "sass": "^0.5.0",
     "sequelize": "^3.23.6",
     "sequelize-cli": "^2.4.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "live-reload": "^1.1.0"
   },
   "bugs": {
     "url": "https://github.com/panicboy/express-gallery/issues"

@@ -16,6 +16,7 @@ Router.use(methodOverride(function(req, res){
     return method;
   }
 }));
+
 Router.get('/favicon.ico', (req, res) => {
   return;
 });
