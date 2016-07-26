@@ -1,3 +1,5 @@
+const Auth = require('authentication.js');
+
 const Express = require('express');
 const Router = Express.Router();
 const app = Express();
