@@ -18,5 +18,12 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
+  },
+  "dbaccess": {
+    "SECRET" : "his own quietus make",
+    "CREDENTIALS" : {
+      "USERNAME" : "panicboy",
+      "PASSWORD" : "3.1415"
+    }
   }
 }
