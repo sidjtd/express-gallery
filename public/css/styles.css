@@ -1,13 +1,11 @@
-
 /*CSS RESET*/
 /*CSS RESET*/
 /*CSS RESET*/
 /*----------------------------------------------------*/
-/* http://meyerweb.com/eric/tools/css/reset/
+/* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -58,7 +56,6 @@ table {
   content: " ";
   clear: both;
   height: 0; }
->>>>>>> andrew_master
 
 .clearfix {
   display: inline-block; }
@@ -74,34 +71,27 @@ table {
 #head_all {
   height: 130px;
   display: flex;
-
   /*background-color: green;*/
   width: 90%;
   box-sizing: border-box;
   justify-content: center;
   align-items: center; }
 
-
 .double-container {
   position: relative;
   margin: 90px 0px 20px 50px;
   background-color: yellow;
   display: flex;
-
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between; }
 
-
 .header-container {
-  top: 0;
-  right: 0;
-  vertical-align: middle;
+  margin: 0px 0px 0px 0px;
   height: 90px;
   width: 47%;
   background-color: red;
   display: flex;
-
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between; }
@@ -145,7 +135,7 @@ table {
   color: #ccc;
   font-size: 9px;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-  background-color: purple; }
+  background-color: green; }
   @media only screen and (max-width: 600px) {
     #side_text {
       display: none; } }
@@ -176,5 +166,4 @@ table {
   align-self: flex-start;
   text-align: left;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-  font-size: 12pt;
-}
+  font-size: 12pt; }

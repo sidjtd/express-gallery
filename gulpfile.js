@@ -5,10 +5,10 @@ var sass        = require('gulp-sass');
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
 
-  browserSync.init({
-      server: "./public",
-        proxy: 'localhost:3000'
-  });
+  // browserSync.init({
+  //     server: "./public",
+  //       proxy: 'localhost:3000'
+  // });
   gulp.watch("scss/*.scss", ['sass']);
   gulp.watch("scss/*/*.scss", ['sass']);
   gulp.watch("public/*").on('change', browserSync.reload);
