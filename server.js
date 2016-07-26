@@ -6,7 +6,7 @@ var Post = db.Post;
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
-const CONFIG = require('./config_auth.json');
+const CONFIG = require('./config/config.json');
 var PORT = 3000;
 
 app.set('view engine','jade');
@@ -20,14 +20,14 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
-  secret: CONFIG.SECRET,
+  secret: CONFIG.dbaccess.SECRET,
   saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new LocalStrategy((username, password, done) => {
-  const CREDENTIALS = CONFIG.CREDENTIALS;
+  const CREDENTIALS = CONFIG.dbaccess.CREDENTIALS;
   const USERNAME = CREDENTIALS.USERNAME;
   const PASSWORD = CREDENTIALS.PASSWORD;
     var user = {
@@ -72,7 +72,8 @@ app.get('/login', (req,res) => {
 
 app.get('/logout', (req,res) => {
   req.logout();
-  res.render('login');
+  console.log('user logged out');
+  return res.redirect('/gallery');
 });
 
 
