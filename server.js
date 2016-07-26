@@ -6,7 +6,7 @@ var Post = db.Post;
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
-// const CONFIG = require('./config.json');
+const CONFIG = require('./config_auth.json');
 
 app.set('view engine','jade');
 app.set('views','./templates');
