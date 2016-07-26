@@ -33,3 +33,4 @@ node_modules
 # Dev & utility stuff
 makedb.sql
 test.sql
+config_auth.json
