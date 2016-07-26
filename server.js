@@ -3,11 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const db = require('./models');
 var Post = db.Post;
+const passport = require('passport');
+const session = require('express-session');
+const LocalStrategy = require('passport-local').Strategy;
+// const CONFIG = require('./config.json');
 
 app.set('view engine','jade');
 app.set('views','./templates');
-
-
 
 /*  ROUTES  */
 var routr = require ('./routes/router');
@@ -20,10 +22,9 @@ app.use(function(req, res, next) {
  });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/', routr);
 app.use('/gallery', routr);
+app.use('/', routr);
 app.use(express.static('public'));
-
 
 
 app.listen(PORT, function() {

@@ -10,7 +10,7 @@ gulp.task('serve', ['sass'], function() {
         proxy: 'localhost:3000'
   });
   gulp.watch("scss/*.scss", ['sass']);
-  gulp.watch("scss/**/*.scss", ['sass']);
+  gulp.watch("scss/*/*.scss", ['sass']);
   gulp.watch("public/*").on('change', browserSync.reload);
 });
 
