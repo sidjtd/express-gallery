@@ -18,9 +18,12 @@ app.use(function(req, res, next) {
   console.log('method: ',req.method, ' url: ',req.url);
   next();
  });
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/gallery', routr);
 app.use('/', routr);
+app.use('/gallery', routr);
+app.use(express.static('public'));
+
 
 
 app.listen(PORT, function() {
