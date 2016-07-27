@@ -40,6 +40,8 @@ passport.use(new LocalStrategy(
         console.log('Incorrect password');
         return done(null, false, { message: 'Incorrect password.' });
       }
+      let userId = Number(user.id);
+      user = {id: userId};
       return done(null, user);
     });
   }

@@ -38,6 +38,7 @@ Router.get('/new', (req, res) => {
 });
 
 Router.get('/:id', (req, res) => {
+  console.log('req.user: ', req.user);
   var id = req.params.id;
   Post.findById(id)
   .then(function (findResult) {
@@ -56,6 +57,7 @@ Router.post('/', (req,res)=>{
 });
 
 Router.get('/:id/edit', (req, res) => {
+  console.log('req.user: ', req.user);
   // add authentication here
   // redirect to login if not authenticated
   var id = req.params.id;
