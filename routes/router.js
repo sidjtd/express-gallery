@@ -3,7 +3,7 @@ const Router = Express.Router();
 const app = Express();
 const db = require('../models');
 const Post = db.Post;
-var User = db.User;
+const User = db.User;
 const methodOverride = require('method-override');
 app.use(methodOverride('X-HTTP-Method-Override'));
 

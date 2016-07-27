@@ -68,14 +68,9 @@ app.get('/createuser', (req,res) => {
 });
 
 app.post('/createuser', (req,res) => {
-  console.log('req.body: ', req.body);
   User.create(req.body)
-  .then(function (newUserData) {
-    console.log('new user: ', newUserData.dataValues);
-    // return app.post('/login', passport.authenticate('local', {
-    //   successRedirect: '/gallery',
-    //   failureRedirect: '/login'
-    // }));
+  .then(() => {
+    return res.render('login');
   });
 });
 
@@ -93,8 +88,6 @@ app.get('/logout', (req,res) => {
   console.log('user logged out');
   return res.redirect('/gallery');
 });
-
-
 
 /*  ROUTES  */
 var routr = require ('./routes/router');
