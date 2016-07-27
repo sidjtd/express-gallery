@@ -64,6 +64,7 @@ const isAuthenticated = (req,res,next) => {
 };
 
 app.get('/createuser', (req,res) => {
+  console.log(req);
   return res.render('newuser');
 });
 
