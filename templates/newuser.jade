@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-html(lang="en")
-head
-  meta(charset="UTF-8")
-  title New User
-body
+include layout
+
+block content
   h1 Create account
   form(method="POST" action="/createuser")
     p
@@ -11,6 +8,6 @@ body
     p
       input(type="password" name="password" placeholder="password")
     p
-      input(type="text" name="email" placeholder="new users only")
+      input(type="text" name="email" placeholder="email")
     p
       button(type="submit") Create account

@@ -27,7 +27,17 @@ Router.get('/', (req, res) => {
   Post.findAll()
   .then(function (findResult) {
     if(findResult !== null && findResult != 'null'){
-      return res.render('index', {galleryItems: findResult});
+      if(req.user !== undefined){
+        return res.render('index', {
+        galleryItems: findResult,
+        logged: true
+        });
+      } else {
+        return res.render('index', {
+        galleryItems: findResult,
+        logged: false
+        });
+      }
     }
   });
 });
