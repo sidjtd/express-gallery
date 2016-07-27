@@ -2,17 +2,14 @@ include layout
 
 h1 New Post
 form(action='/gallery' method='post')
-  div
-    label(for='author') Author
-    input(type='text' name='author' placeholder='username' id='author')
 
   div
     label(for='image_url') URL
     input(type='text' name='image_url' placeholder='http://' id='image_url')
 
   div
-    label(for='link') Site
-    input(type='text' name='link' placeholder='Example: flickr.com' id='link')
+    label(for='title') Title
+    input(type='text' name='link' placeholder='title' id='title')
 
   div
     label(for='description') Description
