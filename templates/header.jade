@@ -5,5 +5,9 @@ div.row.header-master#head_all
         a(href='/gallery')
           h1#architekt_header _ARCHITEKT
     div#head_text
+      form(method="GET" action="/login")
+        button(id="loginbutton" type="submit") Login
+      form(method="GET" action="/logout")
+        button(id="logoutbutton" type="submit") Logout
       div#side_box
         p#side_text Welcome to our online portfolio, we are small group of passionate designers and architects, looking to change and create amazing digital images to inspire others to follow in our innovate steps. Free Architect WordPress Theme
