@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const db = require('./models');
 var Post = db.Post;
+var User = db.User;
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
@@ -26,22 +27,23 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LocalStrategy((username, password, done) => {
-  const CREDENTIALS = CONFIG.dbaccess.CREDENTIALS;
-  const USERNAME = CREDENTIALS.USERNAME;
-  const PASSWORD = CREDENTIALS.PASSWORD;
-    var user = {
-      name: 'Joe',
-      role: 'ADMIN',
-      favColor: 'GREEN'
-    };
-    console.log('USERNAME: ', USERNAME);
-    console.log('username: ', username);
-    if(username === USERNAME && password === PASSWORD) {
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({where: { username: `${username}` }})
+    .then(function (findResult) {
+      if(!findResult) {
+        console.log('Incorrect username');
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      var user = findResult.dataValues;
+      if(!user.password === password) {
+        console.log('Incorrect password');
+        return done(null, false, { message: 'Incorrect password.' });
+      }
       return done(null, user);
-    }
-    return done(null, false);
-}));
+    });
+  }
+));
 
 passport.serializeUser(function(user, done) {
   console.log('user serialized.');
@@ -61,10 +63,26 @@ const isAuthenticated = (req,res,next) => {
   return next();
 };
 
+app.get('/createuser', (req,res) => {
+  return res.render('newuser');
+});
+
+app.post('/createuser', (req,res) => {
+  console.log('req.body: ', req.body);
+  User.create(req.body)
+  .then(function (newUserData) {
+    console.log('new user: ', newUserData.dataValues);
+    // return app.post('/login', passport.authenticate('local', {
+    //   successRedirect: '/gallery',
+    //   failureRedirect: '/login'
+    // }));
+  });
+});
+
 app.post('/login', passport.authenticate('local', {
     successRedirect: '/gallery',
     failureRedirect: '/login'
-  }));
+}));
 
 app.get('/login', (req,res) => {
   res.render('login');

@@ -3,6 +3,7 @@ const Router = Express.Router();
 const app = Express();
 const db = require('../models');
 const Post = db.Post;
+var User = db.User;
 const methodOverride = require('method-override');
 app.use(methodOverride('X-HTTP-Method-Override'));
 
@@ -87,8 +88,6 @@ Router.put('/:id', (req, res) => {
     console.error(`Problems with findById ${body.id}: `, err);
   });
 });
-
-
 
 Router.delete('/:id', (req, res) => {
   var id = req.params.id;

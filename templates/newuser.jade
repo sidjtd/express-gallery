@@ -2,17 +2,15 @@
 html(lang="en")
 head
   meta(charset="UTF-8")
-  title Gallery authentication
-body Hi there!
-  h1 login form
-  form(method="POST" action="/login")
+  title New User
+body
+  h1 Create account
+  form(method="POST" action="/createuser")
     p
       input(type="text" name="username" placeholder="username")
     p
       input(type="password" name="password" placeholder="password")
     p
-      button(type="submit") Login
-
-  form(method="GET" action="/createuser")
+      input(type="text" name="email" placeholder="new users only")
     p
-      button(type="submit") Register
+      button(type="submit") Create account
