@@ -50,7 +50,7 @@ Router.post('/', (req,res)=>{
   Post.create(req.body)
   .then(function (postdata) {
     // sends back values as entered into DB
-    return res.render('item', postdata.dataValues);
+    return res.render('detailview', postdata.dataValues);
   });
 });
 
