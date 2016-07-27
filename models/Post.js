@@ -6,9 +6,8 @@ module.exports = function(sequelize, DataTypes) {
     title: {type: DataTypes.STRING,
       allowNull: false},
     description: DataTypes.TEXT
-    },{
-    classMethods: {
-      associate: function(models) {
+    }, { classMethods:
+      { associate: function(models) {
         Post.belongsTo(models.User);
       }
     }
