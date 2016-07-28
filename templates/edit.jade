@@ -4,16 +4,12 @@ h1 Edit this post!
 form(action='/gallery/#{id}' method='POST')
   input(type='hidden' name='_method' value='PUT')
   div
-    label(for='author') Author
-    input(type='text' name='author' value='#{author}' id='author')
-
-  div
     label(for='image_url') URL
     input(type='text' name='image_url' value='#{image_url}' id='image_url')
 
   div
-    label(for='link') Site
-    input(type='text' name='link' value='#{link}' id='link')
+    label(for='title') Title
+    input(type='text' name='title' value='#{title}' id='title')
 
   div
     label(for='description') Description

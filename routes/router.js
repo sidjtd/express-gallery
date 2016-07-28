@@ -13,6 +13,8 @@ Router.use(methodOverride(function(req, res){
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     // look in urlencoded POST bodies and delete it
     const method = req.body._method;
+    console.log('original method: ', req.method, ', rewritten method: ', method);
+    console.log('req.body: ', req.body);
     delete req.body._method;
     return method;
   }
